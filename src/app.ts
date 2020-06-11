@@ -1,43 +1,39 @@
-const userName = 'Max';
-// userName = 'Maximilian';
-let age = 30;
+class Department {
+    // private readonly id: string;
+    // private name: string;
+    private employees: string[] = [];
 
-age = 29;
+    constructor(private readonly id: string, public name: string) {
+        // this.id = id;
+        // this.name = n;
+    }
 
-// function add(a: number, b: number) {
-//   let result;
-//   result = a + b;
-//   return result;
-// }
+    describe(this: Department) {
+        console.log(`Department (${this.id}): ${this.name}`);
+    }
 
-// if (age > 20) {
-//   let isOld = true;
-// }
+    addEmployee(employee: string) {
+        // validation etc
+        // this.id = 'd2';
+        this.employees.push(employee);
+    }
 
-// console.log(isOld);
-
-// console.log(result);
-
-const add = (a: number, b: number = 1) => a + b;
-
-const printOutput: (a: number | string) => void = (output) => console.log(output);
-
-const button = document.querySelector('button');
-
-if (button) {
-    button.addEventListener('click', (event) => console.log(event));
+    printEmployeeInformation() {
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
 }
 
-printOutput(add(5));
+const accounting = new Department('d1', 'Accounting');
 
-const hobbies = ['Sports', 'Cooking'];
-const activeHobbies = ['Hiking'];
+accounting.addEmployee('Piriya');
+accounting.addEmployee('Vivat');
 
-activeHobbies.push(...hobbies);
+// accounting.employees[2] = 'Anna';
 
-const person = {
-    name: 'Max',
-    age: 30,
-};
+accounting.describe();
+accounting.printEmployeeInformation();
 
-const copiedPerson = { ...person };
+// const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
+
+// accountingCopy.describe();
